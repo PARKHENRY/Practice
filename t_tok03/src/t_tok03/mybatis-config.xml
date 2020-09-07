@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <configuration>
+  
+  <!-- 셀렉트하면 리턴되는 값을 받아줄 타입 -->
+  <typeAliases>
+  	<typeAlias type="t_tok03.Student" alias="StudentType"/>
+  </typeAliases>
+  
+  	<environments default="development">
+  		<environment id="development">
+  		    <!-- 	트랙잭션매니저 타입 
+  			JDBC 커밋과 롤백을 처리하기 위해 사용
+  			MANAGER 어떤것도 하지않음 커밋, 롤백 등의 작업을 컨테이너가 관리하도록 위임함 -->
+  			<transactionManager type="JDBC" /> 
+  			<!-- 데이터소스타입
+  			UNPOOLED 매번 요청에 대해 커넥션을 열고 닫은 간단한 데이터소스
+  			POOLED 새로운 커넥션 요청 시마다 초기화 하지 않음 커넥션 풀이 적용 -->
+  			<dataSource type="POOLED" >
+  				<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+  				<property name="url" value="jdbc:mysql://localhost:3307/test?serverTimezone=UTC"/>
+  				<property name="username" value="root"/>
+  				<property name="password" value="784525"/>
+  			</dataSource>
+  		</environment>
+  	</environments>
+  	
+  	<mappers>
+  		<mapper resource="t_tok03/Student.xml"/>
+  	</mappers>
+  	
+  </configuration>
